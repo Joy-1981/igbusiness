@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IG Mini Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      margin: 50px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #333;
+    }
+    p {
+      font-size: 18px;
+      color: #555;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>IG Mini Game</h2>
+    <p id="balance">Loading balance...</p>
+    <button onclick="playGame()">Play Game</button>
+    <button onclick="checkBalance()">Check Balance</button>
+    <button onclick="resetGame()">Reset Game</button>
+  </div>
+
+  <script>
+    // Initialize the user's balance in localStorage if not already present
+    if (localStorage.getItem('userBalance') === null) {
+      localStorage.setItem('userBalance', 100);  // Default starting balance
+    }
+
+    // Function to update the balance displayed on the page
+    function updateBalance() {
+      const balance = localStorage.getItem('userBalance');
+      document.getElementById('balance').innerText = Your balance: ${balance} IG Coins;
+    }
+
+    // Function to play the game: win or lose IG Coins
+    function playGame() {
+      const currentBalance = parseInt(localStorage.getItem('userBalance'), 10);
+      const coinsWon = Math.floor(Math.random() * 50) + 10;  // Random coins won between 10-50
+      const coinsLost = Math.floor(Math.random() * 20) + 5;   // Random coins lost between 5-20
+      
+      // Random outcome (win or lose)
+      if (Math.random() < 0.5) {
+        // Player wins coins
+        localStorage.setItem('userBalance', currentBalance + coinsWon);
+        alert(You won ${coinsWon} IG Coins!);
+      } else {
+        // Player loses coins
+        localStorage.setItem('userBalance', currentBalance - coinsLost);
+        alert(You lost ${coinsLost} IG Coins.);
+      }
+
+      updateBalance();
+    }
+
+    // Function to check the balance
+    function checkBalance() {
+      updateBalance();
+    }
+
+    // Function to reset the game (reset balance to 100)
+    function resetGame() {
+      localStorage.setItem('userBalance', 100);
+      alert('Game has been reset. You now have 100 IG Coins.');
+      updateBalance();
+    }
+
+    // Initialize the balance display when the page loads
+    updateBalance();
+  </script>
+<img src="b.jpg" alt="b">
+</body>
+</html>

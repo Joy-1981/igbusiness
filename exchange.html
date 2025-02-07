@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG Coin Trading</title>
+    <!--<script>
+        let price = 1.15; // Starting price
+        let change = 0.02; // Change in price
+        let coinsAvailable = 100; // Starting IG Coin balance
+        let previousPrice = price; // To track the price movement (up/down)
+
+        // Function to simulate price movement
+        function updatePrice() {
+            // Save the previous price to check if the price is up or down
+            let oldPrice = price;
+            
+            // Randomly increase or decrease the price
+            price += (Math.random() - 0.5) * change;
+            if (price < 0.90) price = 0.90; // Ensure price does not drop below $0.90
+            if (price > 1.50) price = 1.50; // Ensure price does not go above $1.50
+
+            // Check if the price is going up or down
+            let priceChangeColor = price > oldPrice ? "green" : "red";
+            document.getElementById('priceDisplay').innerText = "$" + price.toFixed(2);
+            document.getElementById('priceDisplay').style.color = priceChangeColor;
+
+            // Update candlestick chart
+            document.getElementById('candlestick').innerHTML = generateCandlestick(priceChangeColor);
+        }
+
+        // Function to generate the candlestick chart as ASCII art
+        function generateCandlestick(color) {
+            let levels = [];
+            for (let i = 0; i < 10; i++) {
+                let level = Math.max(0.90, Math.min(1.50, price + (Math.random() - 0.5) * 0.05));
+                levels.push(level);
+            }
+
+            // Apply color to candlestick chart based on price direction
+            let chartHTML = levels.reverse().map(level => {
+                let levelColor = color; // Green if price is going up, red if going down
+                return <span style="color:${levelColor};">|</span>${' '.repeat(Math.floor((level - 0.90) * 20))}<span style="color:${levelColor};">|</span>;
+            }).join('\n');
+
+            return chartHTML;
+        }
+
+        // Handle Buy button action
+        function buyCoin() {
+            const amount = parseInt(document.getElementById('amount').value);
+            if (isNaN(amount) || amount <= 0 || amount > coinsAvailable) {
+                alert("Invalid amount.");
+            } else {
+                coinsAvailable -= amount;
+                alert(Bought ${amount} IG Coins!);
+                updateBalance();
+            }
+        }
+
+        // Handle Sell button action
+        function sellCoin() {
+            const amount = parseInt(document.getElementById('amount').value);
+            if (isNaN(amount) || amount <= 0) {
+                alert("Invalid amount.");
+            } else {
+                coinsAvailable += amount;
+                alert(Sold ${amount} IG Coins!);
+                updateBalance();
+            }
+        }
+
+        // Update the available coin balance display
+        function updateBalance() {
+            document.getElementById('balance').innerText = Available Balance: ${coinsAvailable} IG Coins;
+        }
+
+        // Initialize the page
+        window.onload = function() {
+            updatePrice(); // Set initial price
+            setInterval(updatePrice, 2000); // Update price every 2 seconds
+            updateBalance(); // Set initial balance
+        };
+    </script>-->
+    <style>
+        a{
+            text-decoration: none;
+            color-scheme: {% block blockName %}
+            data
+            {% 50 %};
+        }
+        body{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>IG Coin Trading Platform</h1>
+
+    <nav>
+        <a href="#home" style="color: rgb(0, 255, 85);">Home</a> | 
+        <a href="#market" style="color: black;">Market</a> | 
+        <a href="dashboard2.html" style="color: black;">Trade</a> | 
+        <a href="dashboard.html" style="color: black;">P2P</a> | 
+        <a href="my web2.html" style="color: black;">Main Page</a>
+    </nav>
+
+    <hr>
+
+    <!-- Candlestick Chart -->
+    <!--<h2 id="market">Live Market - IG Coin</h2>
+    <pre id="candlestick">
+        |      |      |   |  |
+        |      |   |  |  |  |  |
+        |  |   |  |  |  |  |  |  
+        |  |   |  |  |  |  |  |  
+        |_|_||||||_
+        $0.90  $1.00  $1.10  $1.20  $1.30  
+    </pre>
+    <p>Price: <strong id="priceDisplay" style="color:green">$1.15</strong></p>
+
+    <hr>-->
+
+    <!-- Buy/Sell Section -->
+    <h2 id="trade">Trade IG Coin</h2>
+    <p id="balance">Available Balance: 100 IG Coins</p>
+    <form>
+        <label for="amount">Enter Amount:</label>
+        <input type="number" id="amount" name="amount" min="1" max="100">
+        <br><br>
+        <input type="button" value="Buy IG Coin" onclick="buyCoin()">
+        <input type="button" value="Sell IG Coin" onclick="sellCoin()">
+    </form>
+
+    <hr>
+
+    <!-- List of Other Coins -->
+    <h2>Other Coins to Buy</h2>
+    <ul>
+        <li>Bitcoin (BTC) - $42,000</li>
+        <li>Ethereum (ETH) - $3,200</li>
+        <li>Ripple (XRP) - $0.85</li>
+        <li>Litecoin (LTC) - $150</li>
+        <li>IG Coin (IGC) - <strong id="priceDisplay2">$50,000.15</strong></li>
+    </ul>
+
+    <hr>
+
+    <!-- Contact Section -->
+    <h2 id="contact">Contact Support</h2>
+    <p>Email: support@igcoin.com</p>
+    <p>Instagram: <a href="https://instagram.com/YOUR_IG_HANDLE" target="_blank">@YOUR_IG_HANDLE</a></p>
+
+</body>
+</html>

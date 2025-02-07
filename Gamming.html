@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subway Surfers</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+    }
+    
+    #game-container {
+      position: relative;
+      width: 800px;
+      height: 600px;
+      border: 1px solid #ccc;
+      margin: 20px auto;
+      background-color: #87CEEB; /* Added background color */
+    }
+    
+    #player {
+      position: absolute;
+      width: 50px;
+      height: 100px;
+      background-color: #03A9F4;
+      top: 450px;
+      left: 100px;
+      border-radius: 10px;
+    }
+    
+    #obstacle {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: #FFC107;
+      top: 500px;
+      left: 800px;
+      border-radius: 10px;
+    }
+    
+    #score {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    
+    #game-over {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 36px;
+      font-weight: bold;
+      display: none;
+    }
+    
+    #play-again {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      font-weight: bold;
+      display: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <div id="player"></div>
+    <div id="obstacle"></div>
+    <div id="score">Score: 0</div>
+    <div id="game-over"></div>
+    <div id="play-again">Play Again</div>
+  </div>
+  
+  <script>
+    // Get the player, obstacle, score, game over, and play again elements
+    const player = document.getElementById('player');
+    const obstacle = document.getElementById('obstacle');
+    const scoreElement = document.getElementById('score');
+    const gameOverElement = document.getElementById('game-over');
+    const playAgainElement = document.getElementById('play-again');
+    
+    // Set the player and obstacle positions
+    let playerX = 100;
+    let playerY = 450;
+    let obstacleX = 800;
+    let obstacleY = 500;
+    
+    // Set the player and obstacle speeds
+    let playerSpeed = 5;
+    let obstacleSpeed = 5;
+    
+    // Set the score
+    let score = 0;
+    
+    // Update the game state
+    function update() {
+      // Update the obstacle position
+      obstacleX -= obstacleSpeed;
+      obstacle.style.left = `${obstacleX}px`;
+      
+      // Check for collision
+      if (obstacleX < playerX + 50 &&
+          obstacleX + 50 > playerX &&
+          obstacleY < playerY + 100 &&
+          obstacleY + 50 > playerY) {
+        gameOver();
+      }
+      
+      // Update the score
+      score++;
+      scoreElement.textContent = `Score: ${score}`;
+      
+      // Reset the obstacle position
+      if (obstacleX < -50) {
+        obstacleX = 800;
+        obstacleSpeed += 0.5;
+      }
+      
+      // Request the next frame
+      requestAnimationFrame(update);
+    }
+    
+    // Handle player movement
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowUp') {
+        playerY -= playerSpeed;
+        player.style.top = `${playerY}px`;
+      } else if (event.key === 'ArrowDown') {
+        playerY += playerSpeed;
+        player.style.top = `${playerY}px`;
+      } else if (event.key === 'ArrowLeft') {
+        playerX -= playerSpeed;
+        player.style.left = `${playerX}px`;
+      } else if (event.key === 'ArrowRight') {
+        playerX += playerSpeed;
+        player.style.left = `${playerX}px`;
+      }
+    });
+    
+    // Game over function
+    function gameOver() {
+      gameOverElement.textContent = 'Game Over!';
+      gameOverElement.style.display = 'block';
+      playAgainElement.style.display = 'block';
+      cancelAnimationFrame(update);
+    }
+    
+    // Play again function
+    playAgainElement.addEventListener('click', () => {
+      location.reload();
+    });
+    
+    // Start the game loop
+    update();
+  </script>
+</body>
+</html>
+

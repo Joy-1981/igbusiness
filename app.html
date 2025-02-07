@@ -1,0 +1,338 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Runner Game</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { text-align: center; font-family: Arial, sans-serif; background: #222; color: white; overflow: hidden; }
+        canvas { background: #4CAF50; display: block; margin: 20px auto; border-radius: 10px; }
+        .controls { margin-top: 10px; }
+        button { padding: 10px 20px; margin: 5px; font-size: 18px; cursor: pointer; border: none; border-radius: 5px; }
+        .play { background: #28a745; color: white; }
+        .pause { background: #ffc107; }
+        .restart { background: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+
+    <h1>Endless Runner</h1>
+    <canvas id="gameCanvas" width="800" height="300"></canvas>
+    <div class="controls">
+        <button class="play" onclick="resumeGame()">Play</button>
+        <button class="pause" onclick="pauseGame()">Pause</button>
+        <button class="restart" onclick="restartGame()">Restart</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let player1 = { x: 50, y: 230, width: 30, height: 30, dy: 0, gravity: 0.5, jumpPower: -10, grounded: true };
+        let player2 = { x: 100, y: 230, width: 30, height: 30, dy: 0, gravity: 0.5, jumpPower: -10, grounded: true };
+        let currentPlayer = 1; // 1 for player 1, 2 for player 2
+        let obstacles = [];
+        let score = 0;
+        let isPaused = false;
+        let gameOver = false;
+        let gameSpeed = 4;
+
+        function drawPlayer(player) {
+            ctx.fillStyle = player === 1 ? "white" : "blue";
+            ctx.fillRect(player === 1 ? player1.x : player2.x, player === 1 ? player1.y : player2.y, player === 1 ? player1.width : player2.width, player === 1 ? player1.height : player2.height);
+        }
+
+        function updatePlayer(player) {
+            let current = player === 1 ? player1 : player2;
+            if (!isPaused) {
+                current.y += current.dy;
+                current.dy += current.gravity;
+                
+                if (current.y >= 230) {
+                    current.y = 230;
+                    current.dy = 0;
+                    current.grounded = true;
+                }
+            }
+        }
+
+        function spawnObstacle() {
+            if (!isPaused && Math.random() < 0.02) {
+                obstacles.push({ x: canvas.width, y: 250, width: 20, height: 40 });
+            }
+        }
+
+        function updateObstacles() {
+            obstacles.forEach((obstacle, index) => {
+                obstacle.x -= gameSpeed;
+                if (obstacle.x + obstacle.width < 0) {
+                    obstacles.splice(index, 1);
+                    score++;
+                }
+
+                if ((player1.x < obstacle.x + obstacle.width && player1.x + player1.width > obstacle.x && player1.y < obstacle.y + obstacle.height && player1.y + player1.height > obstacle.y) ||
+                    (player2.x < obstacle.x + obstacle.width && player2.x + player2.width > obstacle.x && player2.y < obstacle.y + obstacle.height && player2.y + player2.height > obstacle.y)) {
+                    gameOver = true;
+                    pauseGame();
+                    alert(Game Over! Score: ${score});
+                }
+            });
+        }
+
+        function drawObstacles() {
+            ctx.fillStyle = "red";
+            obstacles.forEach(obstacle => ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height));
+        }
+
+        function drawScore() {
+            ctx.fillStyle = "white";
+            ctx.font = "20px Arial";
+            ctx.fillText("Score: " + score, 10, 30);
+        }
+
+        function gameLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            drawPlayer(currentPlayer);
+            drawObstacles();
+            drawScore();
+
+            if (!gameOver) {
+                updatePlayer(currentPlayer);
+                spawnObstacle();
+                updateObstacles();
+            }
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        function jump() {
+            if (currentPlayer === 1 && player1.grounded && !isPaused) {
+                player1.dy = player1.jumpPower;
+                player1.grounded = false;
+            }
+            if (currentPlayer === 2 && player2.grounded && !isPaused) {
+                player2.dy = player2.jumpPower;
+                player2.grounded = false;
+            }
+        }
+
+        function switchPlayer() {
+            currentPlayer = currentPlayer === 1 ? 2 : 1;
+        }
+
+        function pauseGame() {
+            isPaused = true;
+        }
+
+        function resumeGame() {
+            if (!gameOver) {
+                isPaused = false;
+            }
+        }
+
+        function restartGame() {
+            player1.y = 230;
+            player2.y = 230;
+            player1.dy = 0;
+            player2.dy = 0;
+            obstacles = [];
+            score = 0;
+            isPaused = false;
+            gameOver = false;
+            currentPlayer = 1;
+        }
+
+        document.addEventListener("keydown", (e) => {
+            if (e.code === "ArrowUp" && currentPlayer === 1) jump(); // Player 1 jump
+            if (e.code === "KeyW" && currentPlayer === 2) jump(); // Player 2 jump
+            if (e.code === "Tab") switchPlayer(); // Switch players
+        });
+
+        canvas.addEventListener("click", jump);
+
+        gameLoop();
+    </script>
+
+</body>
+</html>-->
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Puzzle Game</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: linear-gradient(135deg, #ff7a18, #af002d, #319197);
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            flex-direction: column; 
+            height: 100vh; 
+            color: white; 
+            text-align: center;
+        }
+        h1 { font-size: 2rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); }
+        .puzzle-container { display: flex; justify-content: center; margin-bottom: 20px; }
+        .puzzle-box { width: 80px; height: 80px; border: 2px solid #fff; margin: 10px; display: flex; justify-content: center; align-items: center; background-color: #f0f0f0; font-size: 2rem; cursor: pointer; opacity: 0; transition: opacity 1s ease-in-out; }
+        .letter { width: 80px; height: 80px; margin: 10px; display: flex; justify-content: center; align-items: center; background-color: #f39c12; font-size: 2rem; cursor: pointer; }
+        .timer { font-size: 1.5rem; color: yellow; margin-top: 10px; }
+        .hidden { display: none; }
+        button { 
+            background-color: #1abc9c; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            margin-top: 20px; 
+            cursor: pointer; 
+            font-size: 1rem; 
+            border-radius: 5px; 
+            transition: background-color 0.3s ease;
+        }
+        button:hover { background-color: #16a085; }
+    </style>
+</head>
+<body>
+
+    <h1>Word Puzzle Game</h1>
+    <div class="puzzle-container" id="puzzle">
+        <!-- Puzzle boxes will be inserted here -->
+    </div>
+    <div id="letters">
+        <!-- Letters will be inserted here -->
+    </div>
+    <div class="timer" id="timer">Time: 10</div>
+    <button onclick="nextWord()">Next Word</button>
+
+    <audio id="clapSound" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+
+    <script>
+        const puzzleWords = ['P_T', 'A_E', 'D_G', 'B_T', 'C_T'];
+        let currentWordIndex = 0;
+        let correctWord;
+        let letters;
+        let timer = 10;
+        let interval;
+        let puzzle = [];
+
+        function nextWord() {
+            if (currentWordIndex < puzzleWords.length) {
+                // Reset puzzle and timer
+                document.getElementById('timer').textContent = "Time: 10";
+                timer = 10;
+                clearInterval(interval);
+                interval = setInterval(updateTimer, 1000);
+
+                correctWord = puzzleWords[currentWordIndex].split('');
+                letters = shuffle(correctWord.concat(generateRandomLetters()));
+                puzzle = Array(correctWord.length).fill(null);
+
+                renderPuzzle();
+                renderLetters();
+                currentWordIndex++;
+            } else {
+                clearInterval(interval);
+                alert("Congratulations! You solved all the words!");
+                document.getElementById("clapSound").play();
+            }
+        }
+
+        function updateTimer() {
+            timer--;
+            document.getElementById('timer').textContent = "Time: " + timer;
+
+            if (timer <= 0) {
+                clearInterval(interval);
+                alert("Time's up! Moving to the next word.");
+                nextWord();
+            }
+        }
+
+        function renderPuzzle() {
+            const puzzleContainer = document.getElementById('puzzle');
+            puzzleContainer.innerHTML = '';
+            correctWord.forEach((letter, index) => {
+                const box = document.createElement('div');
+                box.classList.add('puzzle-box');
+                box.setAttribute('data-index', index);
+                puzzleContainer.appendChild(box);
+            });
+
+            // Fade in the puzzle boxes to simulate sliding effect
+            setTimeout(() => {
+                const boxes = document.querySelectorAll('.puzzle-box');
+                boxes.forEach(box => {
+                    box.style.opacity = 1;
+                });
+            }, 200);
+        }
+
+        function renderLetters() {
+            const lettersContainer = document.getElementById('letters');
+            lettersContainer.innerHTML = '';
+            letters.forEach(letter => {
+                const letterElement = document.createElement('div');
+                letterElement.classList.add('letter');
+                letterElement.textContent = letter;
+                letterElement.setAttribute('draggable', true);
+                letterElement.addEventListener('dragstart', dragStart);
+                lettersContainer.appendChild(letterElement);
+            });
+        }
+
+        function dragStart(e) {
+            e.dataTransfer.setData('text', e.target.textContent);
+        }
+
+        function dragOver(e) {
+            e.preventDefault();
+        }
+
+        function drop(e) {
+            e.preventDefault();
+            const droppedLetter = e.dataTransfer.getData('text');
+            const boxIndex = e.target.getAttribute('data-index');
+
+            if (e.target.textContent === '') {
+                puzzle[boxIndex] = droppedLetter;
+                renderPuzzle();
+
+                if (isSolved()) {
+                    clearInterval(interval);
+                    alert("Great job! Word solved.");
+                    nextWord();
+                }
+            }
+        }
+
+        function isSolved() {
+            return puzzle.every((letter, index) => letter === correctWord[index]);
+        }
+
+        function shuffle(array) {
+            let shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function generateRandomLetters() {
+            const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+            return letters.slice(0, 5);
+        }
+
+        document.addEventListener('dragover', dragOver);
+        document.addEventListener('drop', drop);
+
+        // Start the first word
+        nextWord();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!--<html>
+<head>
+<title>CSS</title>
+<style>
+body{background-image:radial-gradient(rgb(237, 247, 237),rgb(43, 233, 18));
+color:blue;
+}
+h1{
+    width: 30%;
+    border-right: 5px double black;
+    border-bottom: 5px double black;
+    border-left: 5px double black;
+    margin: 15rem;
+    text-align: center;
+    font-family: sans-serif;
+    text-shadow: 2px 2px grey;
+    padding: 10px;
+}
+header > nav > a:hover {
+    color: white;
+    text-shadow: 0px 0px 5px rgb(81, 0, 128);
+    transform: scale(1.1);
+}
+.hamburger-button > div {
+    width: 2rem;
+    height: 2px;
+    background-color: rgb(81, 0, 128);
+    margin: 8px;
+}
+</style>
+</head>
+<form action="Ig2.html">
+<body>
+<h1>IG website</h1>
+<fieldset>
+    <legend>Personal Information</legend>
+    <label for="firstname">First name:</label><input type="text" name="firstname" id="firstname"required/><br><br>
+    <label for="lastname">Last name:</label><input type="text" name="lastname" id="lastname"required/><br></br>
+    <label for="Othername">Other name:</label><input type="text" name="Othername" id="Othername"/><br></br>
+    <label for d.o.b>Date of Birth:</label><input type="date" name="d.o.b" id="date of birth"required/>
+    <label for="Age">Age:</label><input type="number" name="age" id="age"required/><br><br>
+    <label>Gender:</label>
+    <label for="male">Male</label><input type="radio" name="male" id="male"/>
+    <label for="female">Female</label><input type="radio" name="female" id="female"/>
+
+</fieldset>
+<fieldset>
+<legend>Working Experience</legend><br><br>
+<label>Country</label>
+<select>
+    <option>Nigeria</option>
+    <option>Cameroon</option>
+    <option>morocco</option>
+    <option>India</option>
+    <option>England</option>
+    <option>Spain</option>
+    <option>Ghana</option>
+    <option>Singapore</option>
+    <option>Germany</option>
+    <option>Canada</option>
+</select><br><br>
+<label>You Have Worked From ?</label><br><br>
+<input type="checkbox" id="home"/><label for="home">From Home</label>
+<input type="checkbox" id="School"/><label for="School">From School</label>
+<input type="checkbox" id="Work"/><label for="work">From Work</label><br><br>
+<label>Tell us your Working Experience</label><br><br>
+<textarea rows="10"cols="50"></textarea>
+</fieldset>
+<fieldset>
+    <legend>Security Information</legend>
+    <label for="email">E-mail:</label><input type="Characters" name="email" id="email"required/><br><br>
+    <label for="password">Password:</label><input type="Characters" name="password" id="password"required/><br><br>
+    <button type="submit">Summit</button>
+    <button type="button">Button</button>
+    <button type="reset">Reset</button>
+</fieldset>
+</form>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - IG Exchange</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 500px;
+            margin: 5rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        input, select {
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form action="login.html" method="POST">
+            <!-- Full Name -->
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+            
+            <!-- Email -->
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <!-- Phone Number -->
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            
+            <!-- Password -->
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create a password" required>
+            
+            <!-- Confirm Password -->
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+            
+            <!-- Date of Birth -->
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required>
+            
+            <!-- Gender -->
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select your gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            
+            <!-- Country -->
+            <label for="country">Country</label>
+            <input type="text" id="country" name="country" placeholder="Enter your country" required>
+            
+            <!-- Submit Button -->
+            <input type="submit" value="Sign Up">
+        </form>
+        <div class="footer">
+            <p>Already have an account? <a href="login.html">Log in</a></p>
+        </div>
+    </div>
+</body>
+</html>

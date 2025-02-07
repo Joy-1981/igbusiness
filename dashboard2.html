@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG Exchange - Candlestick Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 { color: #f8b400; }
+        .chart-container {
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+        }
+        canvas {
+            background: #1e1e1e;
+            border-radius: 5px;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .buy { background: green; color: white; }
+        .sell { background: red; color: white; }
+    </style>
+</head>
+<body>
+
+    <h1>IG Exchange - Live Candlestick Chart</h1>
+    
+    <div class="chart-container">
+        <canvas id="candlestickChart"></canvas>
+    </div>
+
+    <div class="buttons">
+        <button class="buy" onclick="buy()">Buy</button>
+        <button class="sell" onclick="sell()">Sell</button>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('candlestickChart').getContext('2d');
+
+        let candleData = generateRandomCandles();
+        const chart = new Chart(ctx, {
+            type: 'candlestick',
+            data: { datasets: [{ label: "IG Coin", data: candleData, borderColor: 'white' }] },
+            options: {
+                scales: {
+                    x: { type: 'timeseries', time: { unit: 'minute' }, grid: { color: '#444' } },
+                    y: { grid: { color: '#444' } }
+                }
+            }
+        });
+
+        function generateRandomCandles() {
+            let data = [];
+            let time = Date.now();
+            let price = 50000; // Starting price
+            for (let i = 0; i < 30; i++) {
+                let open = price;
+                let close = open + (Math.random() * 200 - 100);
+                let high = Math.max(open, close) + Math.random() * 50;
+                let low = Math.min(open, close) - Math.random() * 50;
+                data.push({ x: time, o: open, h: high, l: low, c: close });
+                time -= 60000; // 1 minute earlier
+                price = close;
+            }
+            return data.reverse();
+        }
+
+        function updateCandles() {
+            let lastCandle = candleData[candleData.length - 1];
+            let newTime = lastCandle.x + 60000; 
+            let open = lastCandle.c;
+            let close = open + (Math.random() * 200 - 100);
+            let high = Math.max(open, close) + Math.random() * 50;
+            let low = Math.min(open, close) - Math.random() * 50;
+
+            candleData.push({ x: newTime, o: open, h: high, l: low, c: close });
+
+            if (candleData.length > 30) candleData.shift(); 
+            chart.update();
+        }
+
+        setInterval(updateCandles, 3000); 
+
+        function buy() {
+            alert("Buy Order Placed!");
+        }
+
+        function sell() {
+            alert("Sell Order Placed!");
+        }
+    </script>
+</body>
+</html>

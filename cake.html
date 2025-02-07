@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Cake with Candle</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fddde6;
+        }
+
+        .cake {
+            position: relative;
+            width: 200px;
+            height: 150px;
+            background: #8B4513;
+            border-radius: 10px;
+        }
+
+        .layer {
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            background: #d2691e;
+            bottom: 50px;
+            border-top: 5px solid #fff;
+        }
+
+        .top {
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background: #fff;
+            top: -20px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .candle {
+            position: absolute;
+            width: 15px;
+            height: 50px;
+            background: red;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -60px;
+            border-radius: 5px;
+        }
+
+        .flame {
+            position: absolute;
+            width: 15px;
+            height: 25px;
+            background: orange;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50% 50% 50% 50%;
+            animation: flicker 0.2s infinite alternate ease-in-out;
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scaleY(1); opacity: 0.8; }
+            50% { transform: translateX(-48%) scaleY(1.1); opacity: 1; }
+            100% { transform: translateX(-52%) scaleY(0.9); opacity: 0.9; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cake">
+        <div class="top"></div>
+        <div class="layer"></div>
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+    </div>
+
+</body>
+</html>

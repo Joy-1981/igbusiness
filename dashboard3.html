@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .logo-ball {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #03A9F4;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 150px;
+  position: absolute;
+  bottom: 20px;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  animation: jump 2s infinite;
+}
+
+@keyframes jump {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+h1{
+  color: blue;
+  background-color: black;
+  width: 220px;
+}
+a{
+  /*background-color: black;
+  color: green;*/
+text-decoration: none;
+justify-content: space-between;
+}
+body{
+  color: blue;
+  background-color: orange;
+}
+
+    </style>
+</head>
+<body>
+    <!--<form action="More.html">-->
+    <header>
+        <h1>IG BUSINESS</h1>
+        <div class="logo-ball">
+          <span>IG BUSINESS</span>
+          </div>
+        <!--<button class="hamburger-button">
+            <div class="line"></div>
+            <div></div>
+            <div></div>
+        </button>-->
+        <nav>
+            <a href="About me.html">About Me</a>
+            <a href="My project.html">My Projects</a>
+            <a href="Contact Me .html">Contact Me</a>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+           <img src="hero_image2.jpeg" alt="hero">
+        </section>
+    </main>
+    <footer>
+        <p><b>My Name is Goodluck Onyeanusi am the CEO of Ig Business</b></p>
+        <h2>Chat up on whatsapp : 07062542003</h2>
+    </footer>
+    <!--<button type="submit">More info</button>-->
+    </form>
+</body>
+</html>

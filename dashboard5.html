@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG/USDT Candlestick Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        canvas {
+            max-width: 90%;
+            margin-top: 20px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #ffdd44;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>IG/USDT Candlestick Chart</h1>
+    <canvas id="candlestickChart"></canvas>
+
+    <div class="buttons">
+        <button onclick="buyCoin()">BUY</button>
+        <button onclick="sellCoin()">SELL</button>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('candlestickChart').getContext('2d');
+
+        let candlestickChart = new Chart(ctx, {
+            type: 'candlestick',
+            data: {
+                datasets: [{
+                    label: 'IG/USDT',
+                    data: [],
+                    borderColor: 'rgba(255, 255, 255, 0.8)',
+                    color: {
+                        up: 'green',  // ✅ Green for bullish candles
+                        down: 'red',   // ✅ Red for bearish candles
+                        unchanged: 'gray'
+                    }
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: { unit: 'minute' },
+                        ticks: { color: 'white' }
+                    },
+                    y: {
+                        ticks: { color: 'white' }
+                    }
+                }
+            }
+        });
+
+        // Simulated price data
+        let price = 100; // Starting price
+        let candles = [];
+
+        function generateCandle() {
+            let open = price;
+            let high = open + Math.random() * 2;
+            let low = open - Math.random() * 2;
+            let close = low + Math.random() * (high - low);
+
+            price = close; // Update price
+
+            let candle = {
+                x: new Date(),
+                o: open,
+                h: high,
+                l: low,
+                c: close
+            };
+
+            candles.push(candle);
+
+            if (candles.length > 1) {
+                candles.shift(); // Keep chart updated
+            }
+
+            candlestickChart.data.datasets[0].data = candles;
+            candlestickChart.update();
+        }
+
+        setInterval(generateCandle, 2000); // Update every 2 seconds
+
+        function buyCoin() {
+            alert("You bought IG/USDT at $" + price.toFixed(2));
+        }
+
+        function sellCoin() {
+            alert("You sold IG/USDT at $" + price.toFixed(2));
+        }
+    </script>
+
+</body>
+</html>

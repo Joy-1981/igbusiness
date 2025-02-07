@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG Exchange</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+        .container {
+            padding: 2rem;
+        }
+        .feature {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            background-color: white;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        /* Bouncing Logo Styles */
+        .bouncing-logo {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: 60px;
+            height: 60px;
+            background-color: red;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 60px;
+            text-align: center;
+            border-radius: 50%;
+            animation: bounce 2s infinite;
+            z-index: 1000;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bouncing-logo">IG</div>
+    <header>
+        <h1>Welcome to IG Exchange</h1>
+        <p>Your trusted platform for trading and investments</p>
+    </header>
+    <nav>
+        <a href="Ig.html">Sign up</a>
+        <a href="index.html">About Us</a>
+        <a href="More.html">Features</a>
+        <a href="Contact Me .html">Contact</a>
+    </nav>
+    <div class="container">
+        <section id="about" class="feature">
+            <h2>About IG Exchange</h2>
+            <p>IG Exchange is a modern platform for trading cryptocurrencies, stocks, and commodities. With advanced tools and analytics, we empower traders of all levels to succeed in the financial market.</p>
+        </section>
+        <section id="features" class="feature">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Secure and fast transactions</li>
+                <li>Real-time market data</li>
+                <li>Advanced analytics and tools</li>
+                <li>Low transaction fees</li>
+                <li>24/7 customer support</li>
+            </ul>
+        </section>
+        <section id="contact" class="feature">
+            <h2>Contact Us</h2>
+            <p>Email: support@igexchange.com</p>
+            <p>Phone: +234 7062542003</p>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2025 IG Exchange. All rights reserved.</p>
+    </footer>
+</body>
+</html>

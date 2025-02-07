@@ -1,0 +1,461 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 70%;
+            height: 10%;
+        }
+        div{
+            width: 40%;
+            height: auto;
+            border-radius: 0% 0%;
+        }
+        /*background-image{
+            color: aqua;
+        }*/
+    </style>
+</head>
+<body>
+    <img src="hero_image34.jpg" alt="">
+    <form action="img.html">
+        <button class="summit">Read More</button>
+        <div class="heart">heart</div>
+    </form>
+</body>
+</html>-->
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Gift Card</title>
+    <style>
+        /* Background with floating hearts */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts animation */
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            color: rgba(255, 0, 76, 0.7);
+            font-size: 20px;
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        /* Card Design */
+        .card {
+            width: 420px;
+            height: 520px;
+            background: white;
+            border-radius: 30px; /* Rounded edges */
+            border: 5px solid gold; /* Elegant golden border */
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 0px 15px rgba(255, 223, 0, 0.6); /* Glowing effect */
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Animated Big Heart */
+        .big-heart {
+            color: red;
+            font-size: 50px;
+            animation: heartbeat 1s infinite alternate;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        h2 {
+            color: #d63384;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            font-weight: bold;
+            color: #d63384;
+        }
+
+        /* Decorative Curved Corners */
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 50px;
+            height: 50px;
+            border-top: 5px solid gold;
+            border-left: 5px solid gold;
+            border-radius: 20px;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            width: 50px;
+            height: 50px;
+            border-bottom: 5px solid gold;
+            border-right: 5px solid gold;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>-->
+    <!-- Floating Hearts Animation -->
+    <!--<div class="hearts">
+        <script>
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerHTML = "❤️";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+                heart.style.fontSize = Math.random() * 20 + 10 + "px";
+                document.querySelector(".hearts").appendChild(heart);
+            }
+        </script>
+    </div>-->
+
+    <!-- Valentine's Card -->
+    <!--<div class="card">
+        <div class="big-heart">❤️</div>
+        <h2>Happy Valentine's Day, Captain Etim Nyong! 💖</h2>
+        <p>Dear Captain,</p>
+        <p>On this special day, may your heart be filled with joy, love, and beautiful moments. Your strength, kindness, and wisdom are truly admirable.</p>
+        <p>Wishing you a Valentine’s Day as wonderful and inspiring as you are! May love and happiness always surround you.</p>
+        <div class="footer">With love and appreciation, <br> 💖 KCC Student 💖</div>
+    </div>
+
+</body>
+</html>-->
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG Exchange - Candlestick Chart</title>
+    <style>
+        /* Your chart styles */
+        #chart {
+            width: 80%;
+            height: 400px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>IG Exchange Candlestick Chart</h1>
+    <div id="chart"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('chart').getContext('2d');
+        let liveData = {};  // To store live coin data
+
+        const priceCache = JSON.parse(localStorage.getItem('coinPrices')) || {};
+
+        function fetchLivePrices() {
+            fetch('/price/IG/USDT')
+                .then(response => response.json())
+                .then(data => {
+                    liveData = {
+                        "IG/USDT": data.price,
+                        "BTC/USDT": data.BTCUSDT,
+                        "ETH/USDT": data.ETHUSDT,
+                    };
+                    updateChart(liveData);
+                    localStorage.setItem('coinPrices', JSON.stringify(liveData)); // Save for offline use
+                }).catch(() => {
+                    console.log("Offline mode: Using cached data");
+                    if (priceCache["IG/USDT"]) {
+                        updateChart(priceCache);
+                    }
+                });
+        }
+
+        function updateChart(data) {
+            // Use Chart.js or similar library to update the chart
+            // Create a basic candlestick chart with price data (for simplicity)
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['BTC', 'ETH', 'IG'], // Replace with timestamps for real charts
+                    datasets: [{
+                        label: 'Price',
+                        data: [data["BTC/USDT"], data["ETH/USDT"], data["IG/USDT"]],
+                        borderColor: ['#00FF00', '#FF0000', '#00FF00'], // Green for up, Red for down
+                        borderWidth: 1,
+                        fill: false,
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // Simulate price changes in offline mode (using random fluctuation)
+        function simulatePriceChanges() {
+            if (!navigator.onLine) {
+                // Random fluctuation simulation for offline mode
+                setInterval(() => {
+                    liveData["IG/USDT"] = liveData["IG/USDT"] + (Math.random() - 0.5) * 10;
+                    liveData["BTC/USDT"] = liveData["BTC/USDT"] + (Math.random() - 0.5) * 100;
+                    liveData["ETH/USDT"] = liveData["ETH/USDT"] + (Math.random() - 0.5) * 10;
+                    updateChart(liveData);
+                    localStorage.setItem('coinPrices', JSON.stringify(liveData)); // Cache
+                }, 1000); // Simulate price change every 1 second
+            }
+        }
+
+        // Initialize
+        fetchLivePrices();
+        simulatePriceChanges();
+
+    </script>
+</body>
+</html>-->
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG Exchange</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        #chart {
+            width: 80%;
+            height: 400px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>IG Exchange</h1>
+    <div id="chart"></div>
+
+    <button onclick="buyCoin('IG/USDT')">Buy IG Coin</button>
+    <button onclick="sellCoin('IG/USDT')">Sell IG Coin</button>
+    
+    <script>
+        let coinData = {
+            "IG/USDT": 40000,
+            "BTC/USDT": 45000,
+            "ETH/USDT": 3000
+        };
+
+        let currentPrice = coinData["IG/USDT"];
+        let candleData = [];
+        
+        const ctx = document.getElementById('chart').getContext('2d');
+
+        // WebSocket for real-time updates
+        const socket = new WebSocket('ws://localhost:8000/ws');
+        socket.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            coinData = data;
+            updateCandlestickChart(data);
+        };
+
+        function updateCandlestickChart(data) {
+            candleData.push({
+                x: new Date(),
+                y: [data["IG/USDT"] - 50, data["IG/USDT"] + 100, data["IG/USDT"] - 30, data["IG/USDT"] + 60] // OHLV for candlestick
+            });
+
+            if (candleData.length > 20) {
+                candleData.shift(); // Limit chart to last 20 data points
+            }
+
+            new Chart(ctx, {
+                type: 'candlestick',
+                data: {
+                    datasets: [{
+                        label: 'Price',
+                        data: candleData,
+                        borderColor: 'green',
+                        borderWidth: 1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'second'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Buy coin function
+        function buyCoin(coin) {
+            alert('Bought ' + coin);
+            // Add logic to handle buy orders, update portfolio, etc.
+        }
+
+        // Sell coin function
+        function sellCoin(coin) {
+            alert('Sold ' + coin);
+            // Add logic to handle sell orders, update portfolio, etc.
+        }
+
+        // Handle offline simulation
+        if (!navigator.onLine) {
+            alert('You are offline. Price updates will be simulated.');
+            setInterval(() => {
+                coinData["IG/USDT"] = coinData["IG/USDT"] + (Math.random() - 0.5) * 1000;
+                updateCandlestickChart(coinData);
+            }, 1000); // Simulate price updates every second
+        }
+    </script>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG Exchange</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        #chart {
+            width: 80%;
+            height: 400px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>IG Exchange</h1>
+    <div id="chart"></div>
+
+    <button onclick="buyCoin('IG/USDT')">Buy IG Coin</button>
+    <button onclick="sellCoin('IG/USDT')">Sell IG Coin</button>
+
+    <script>
+        let coinData = {
+            "IG/USDT": 40000,
+            "BTC/USDT": 45000,
+            "ETH/USDT": 3000
+        };
+
+        let candleData = [];
+
+        const ctx = document.getElementById('chart').getContext('2d');
+
+        // WebSocket for real-time updates
+        const socket = new WebSocket('ws://localhost:8000/ws');
+        socket.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            coinData = data;
+            updateCandlestickChart(data);
+        };
+
+        function updateCandlestickChart(data) {
+            // Simulate OHLC data
+            let open = data["IG/USDT"] - (Math.random() * 100);   // Random slight variation
+            let close = data["IG/USDT"] + (Math.random() * 100);  // Random slight variation
+            let high = Math.max(open, close) + (Math.random() * 50); // Highest value
+            let low = Math.min(open, close) - (Math.random() * 50);  // Lowest value
+            
+            candleData.push({
+                x: new Date(),
+                o: open,
+                h: high,
+                l: low,
+                c: close
+            });
+
+            if (candleData.length > 20) {
+                candleData.shift(); // Keep only the latest 20 candles
+            }
+
+            new Chart(ctx, {
+                type: 'candlestick',
+                data: {
+                    datasets: [{
+                        label: 'Price',
+                        data: candleData,
+                        borderColor: function(context) {
+                            return context.raw.c > context.raw.o ? 'green' : 'red'; // Green if up, red if down
+                        },
+                        borderWidth: 1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'second'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Buy coin function
+        function buyCoin(coin) {
+            alert('Bought ' + coin);
+            // Logic for handling buy orders
+        }
+
+        // Sell coin function
+        function sellCoin(coin) {
+            alert('Sold ' + coin);
+            // Logic for handling sell orders
+        }
+
+        // Handle offline simulation
+        if (!navigator.onLine) {
+            alert('You are offline. Price updates will be simulated.');
+            setInterval(() => {
+                coinData["IG/USDT"] = coinData["IG/USDT"] + (Math.random() - 0.5) * 1000;
+                updateCandlestickChart(coinData);
+            }, 1000); // Simulate price updates every second
+        }
+    </script>
+</body>
+</html>

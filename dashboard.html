@@ -1,0 +1,570 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #007bff, #00c6ff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            width: 320px;
+        }
+        .app-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .dashboard-title {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .balance {
+            font-size: 26px;
+            font-weight: bold;
+            color: #333;
+            margin: 20px 0;
+        }
+        .hide-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .hide-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="app-title">IG</div>
+        <div class="dashboard-title">Dashboard</div>
+        <p>Available Balance:</p>
+        <p class="balance" id="balance">₦1000</p>
+        <button class="hide-btn" onclick="toggleBalance()">Hide Balance</button>
+    </div>
+
+    <script>
+        function toggleBalance() {
+            let balance = document.getElementById("balance");
+            let button = document.querySelector(".hide-btn");
+
+            if (balance.style.visibility === "hidden") {
+                balance.style.visibility = "visible";
+                button.textContent = "Hide Balance";
+            } else {
+                balance.style.visibility = "hidden";
+                button.textContent = "Show Balance";
+            }
+        }
+    </script>
+
+</body>
+</html>-->
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG Exchange</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: #1e1e1e;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            width: 350px;
+        }
+        .app-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00c6ff;
+            margin-bottom: 10px;
+        }
+        .dashboard-title {
+            font-size: 18px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        .balance {
+            font-size: 26px;
+            font-weight: bold;
+            color: #00ff99;
+            margin: 20px 0;
+        }
+        .hide-btn {
+            background: #00c6ff;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .hide-btn:hover {
+            background: #008ecc;
+        }
+        .market {
+            background: #252525;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .market p {
+            margin: 5px 0;
+        }
+        .price {
+            color: #00ff99;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="app-title">IG Exchange</div>
+        <div class="dashboard-title">Dashboard</div>
+
+        <p>Available Balance:</p>
+        <p class="balance" id="balance">₦1000</p>
+        <button class="hide-btn" onclick="toggleBalance()">Hide Balance</button>
+
+        <div class="market">
+            <p>BTC/NGN: <span class="price" id="btcPrice">₦48,500,000</span></p>
+            <p>ETH/NGN: <span class="price" id="ethPrice">₦3,200,000</span></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleBalance() {
+            let balance = document.getElementById("balance");
+            let button = document.querySelector(".hide-btn");
+
+            if (balance.style.visibility === "hidden") {
+                balance.style.visibility = "visible";
+                button.textContent = "Hide Balance";
+            } else {
+                balance.style.visibility = "hidden";
+                button.textContent = "Show Balance";
+            }
+        }
+
+        function updateMarketPrices() {
+            document.getElementById("btcPrice").textContent = "₦" + (48000000 + Math.floor(Math.random() * 1000000));
+            document.getElementById("ethPrice").textContent = "₦" + (3200000 + Math.floor(Math.random() * 50000));
+        }
+
+        setInterval(updateMarketPrices, 5000); // Update prices every 5 seconds
+    </script>
+
+</body>
+</html>-->
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG Exchange</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: #1e1e1e;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 900px;
+        }
+        .app-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00c6ff;
+            margin-bottom: 10px;
+        }
+        .dashboard-title {
+            font-size: 18px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        .balance {
+            font-size: 26px;
+            font-weight: bold;
+            color: #00ff99;
+            margin: 20px 0;
+        }
+        .hide-btn {
+            background: #00c6ff;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .hide-btn:hover {
+            background: #008ecc;
+        }
+        .market {
+            background: #252525;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .market p {
+            margin: 5px 0;
+        }
+        .price {
+            color: #00ff99;
+            font-weight: bold;
+        }
+        canvas {
+            margin-top: 20px;
+            background: #1e1e1e;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="app-title">IG Exchange</div>
+        <div class="dashboard-title">Dashboard</div>
+
+        <p>Available Balance:</p>
+        <p class="balance" id="balance">₦1000</p>
+        <button class="hide-btn" onclick="toggleBalance()">Hide Balance</button>
+
+        <div class="market">
+            <p>BTC/NGN: <span class="price" id="btcPrice">₦48,500,000</span></p>
+            <p>ETH/NGN: <span class="price" id="ethPrice">₦3,200,000</span></p>
+        </div>
+
+        <canvas id="candlestickChart" width="800" height="400"></canvas>
+    </div>
+
+    <script>
+        function toggleBalance() {
+            let balance = document.getElementById("balance");
+            let button = document.querySelector(".hide-btn");
+
+            if (balance.style.visibility === "hidden") {
+                balance.style.visibility = "visible";
+                button.textContent = "Hide Balance";
+            } else {
+                balance.style.visibility = "hidden";
+                button.textContent = "Show Balance";
+            }
+        }
+
+        function updateMarketPrices() {
+            document.getElementById("btcPrice").textContent = "₦" + (48000000 + Math.floor(Math.random() * 1000000));
+            document.getElementById("ethPrice").textContent = "₦" + (3200000 + Math.floor(Math.random() * 50000));
+        }
+        setInterval(updateMarketPrices, 5000);
+
+        let ctx = document.getElementById("candlestickChart").getContext("2d");
+        let candlestickChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+                datasets: [{
+                    label: 'BTC/NGN',
+                    data: [],
+                    backgroundColor: [],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        function updateCandlestickChart() {
+            let newPrice = 48000000 + Math.floor(Math.random() * 1000000);
+            let lastPrice = candlestickChart.data.datasets[0].data.length ? candlestickChart.data.datasets[0].data.slice(-1)[0] : newPrice;
+            let color = newPrice > lastPrice ? "#00ff99" : "#008ecc";
+            
+            candlestickChart.data.labels.push(candlestickChart.data.labels.length + 1);
+            candlestickChart.data.datasets[0].data.push(newPrice);
+            candlestickChart.data.datasets[0].backgroundColor.push(color);
+
+            if (candlestickChart.data.labels.length > 10) {
+                candlestickChart.data.labels.shift();
+                candlestickChart.data.datasets[0].data.shift();
+                candlestickChart.data.datasets[0].backgroundColor.shift();
+            }
+
+            candlestickChart.update();
+        }
+        setInterval(updateCandlestickChart, 3000);
+    </script>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG Exchange</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: #1e1e1e;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 900px;
+        }
+        .app-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00c6ff;
+            margin-bottom: 10px;
+        }
+        .dashboard-title {
+            font-size: 18px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        .balance {
+            font-size: 26px;
+            font-weight: bold;
+            color: #00ff99;
+            margin: 20px 0;
+        }
+        .btn {
+            background: #00c6ff;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 5px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #008ecc;
+        }
+        .market {
+            background: #252525;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .market p {
+            margin: 5px 0;
+        }
+        .price {
+            color: #00ff99;
+            font-weight: bold;
+        }
+        canvas {
+            margin-top: 20px;
+            background: #1e1e1e;
+            border-radius: 10px;
+        }
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 { color: #f8b400; }
+        .chart-container {
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+        }
+        canvas {
+            background: #1e1e1e;
+            border-radius: 5px;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .buy { background: green; color: white; }
+        .sell { background: red; color: white; }
+    </style>
+</head>
+<body>
+    <form action="dashboard2.html">
+        <button type="submit">view</button>
+    </form>
+    <div class="container">
+        <div class="app-title">IG Exchange</div>
+        <div class="dashboard-title">Dashboard</div>
+
+        <p>Available Balance:</p>
+        <p class="balance" id="balance">₦1000</p>
+        <button class="btn" onclick="toggleBalance()">Hide Balance</button>
+        <button class="btn" onclick="depositFunds()">Deposit</button>
+        <button class="btn" onclick="withdrawFunds()">Withdraw</button>
+
+        <div class="market">
+            <p>BTC/NGN: <span class="price" id="btcPrice">₦48,500,000</span></p>
+            <p>ETH/NGN: <span class="price" id="ethPrice">₦3,200,000</span></p>
+        </div>
+
+        <canvas id="candlestickChart" width="800" height="400"></canvas>
+    </div>
+
+    <script>
+        function toggleBalance() {
+            let balance = document.getElementById("balance");
+            let button = document.querySelector(".btn");
+
+            if (balance.style.visibility === "hidden") {
+                balance.style.visibility = "visible";
+                button.textContent = "Hide Balance";
+            } else {
+                balance.style.visibility = "hidden";
+                button.textContent = "Show Balance";
+            }
+        }
+
+        function depositFunds() {
+            let amount = prompt("Enter deposit amount:");
+            if (amount && !isNaN(amount) && amount > 0) {
+                let balance = document.getElementById("balance");
+                balance.textContent = "₦" + (parseFloat(balance.textContent.replace('₦', '')) + parseFloat(amount));
+            }
+        }
+
+        function withdrawFunds() {
+            let amount = prompt("Enter withdrawal amount:");
+            if (amount && !isNaN(amount) && amount > 0) {
+                let balance = document.getElementById("balance");
+                let currentBalance = parseFloat(balance.textContent.replace('₦', ''));
+                if (currentBalance >= amount) {
+                    balance.textContent = "₦" + (currentBalance - parseFloat(amount));
+                } else {
+                    alert("Insufficient balance!");
+                }
+            }
+        }
+
+        function updateMarketPrices() {
+            document.getElementById("btcPrice").textContent = "₦" + (48000000 + Math.floor(Math.random() * 1000000));
+            document.getElementById("ethPrice").textContent = "₦" + (3200000 + Math.floor(Math.random() * 50000));
+        }
+        setInterval(updateMarketPrices, 5000);
+
+        let ctx = document.getElementById("candlestickChart").getContext("2d");
+        let candlestickChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",],
+                datasets: [{
+                    label: 'BTC/NGN',
+                    data: [],
+                    backgroundColor: [],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        function updateCandlestickChart() {
+            let newPrice = 48000000 + Math.floor(Math.random() * 1000000);
+            let lastPrice = candlestickChart.data.datasets[0].data.length ? candlestickChart.data.datasets[0].data.slice(-1)[0] : newPrice;
+            let color = newPrice > lastPrice ? "#00ff99" : "#008ecc";
+            
+            candlestickChart.data.labels.push(candlestickChart.data.labels.length + 1);
+            candlestickChart.data.datasets[0].data.push(newPrice);
+            candlestickChart.data.datasets[0].backgroundColor.push(color);
+
+            if (candlestickChart.data.labels.length > 10) {
+                candlestickChart.data.labels.shift();
+                candlestickChart.data.datasets[0].data.shift();
+                candlestickChart.data.datasets[0].backgroundColor.shift();
+            }
+
+            candlestickChart.update();
+        }
+        setInterval(updateCandlestickChart, 3000);
+    </script>
+</body>
+</html>
+
+
+

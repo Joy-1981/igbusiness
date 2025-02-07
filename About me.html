@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About me</title>
+    <style>
+       body{background-image:linear-gradient(to bottom,#0a0a0a,#3a3d41);
+color:#FFFFFF;
+}
+h1{
+    width: fit-content;
+    border-bottom: 5px double black;
+    border-left: 5px double black;
+    border-right: 5px double black;
+    text-align: center;
+}
+h1{
+    text-align: center;
+    padding-top: 20vh;
+}
+h1{
+    font-size: 50px;
+    font-weight: bold;
+    color: #03a9f4;
+    text-shadow: 0px 0px 10px rgba(red, green, blue, alpha)(0,0,0,0.5);
+    transition: color 0.3s ease-in-out;
+}
+h1:hover{
+    color: #f7f7f7;
+    margin-bottom: 20px;
+}
+.ball {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #03A9F4;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    </style>
+</head>
+<form action="business.html">
+<body>
+    <h1>About Us</h1>
+    <div class="ball"></div>
+    <script>
+        const ball = document.querySelector('.ball');
+        let x = 0;
+        let y = 0;
+        let vx = 2;
+        let vy = 2;
+        
+        function animate() {
+          x += vx;
+          y += vy;
+          
+          if (x + 50 > window.innerWidth || x < 0) {
+            vx = -vx;
+          }
+          
+          if (y + 50 > window.innerHeight || y < 0) {
+            vy = -vy;
+          }
+          
+          ball.style.top = `${y}px`;
+          ball.style.left = `${x}px`;
+          
+          requestAnimationFrame(animate);
+        }
+        
+        animate();
+        </script>
+    <b>Goodluck: Crypto Enthusiast & Web Developer</b>
+    <p>Goodluck is a multifaceted individual with a strong passion for cryptocurrency and web development. As a crypto enthusiast, Goodluck stays up-to-date with the latest trends and innovations in the cryptocurrency space. With a keen interest in blockchain technology, Goodluck explores its potential applications and implications for the future.<br><br>
+        
+        As a skilled web developer, Goodluck designs and builds visually appealing and user-friendly websites. With expertise in HTML, CSS, and other programming languages, Goodluck crafts websites that provide seamless user experiences. Goodluck's passion for web development is matched only by his enthusiasm for cryptocurrency, making him a unique and valuable asset in the tech space.<br><br>
+        
+        Currently, Goodluck is working on building IG Exchange, a revolutionary cryptocurrency trading platform. With his combined expertise in web development and cryptocurrency, Goodluck is poised to make a significant impact in the crypto space.
+        </p>
+        <button class="submit">Business</button>
+      </form>
+</body>
+</html>
